@@ -21,7 +21,7 @@ public class UserService {
 //        user.setSalt("salt-123-salt");
 //        return userMapper.insertUser(user);
 
-        return userMapper.insertUser(new User(5, userForm.getUsername(), "encodedSalt", "hashedPassword", userForm.getFirstName(), userForm.getLastName()));
+        return userMapper.insertUser(new User(5, userForm.getUsername(), "encodedSalt", userForm.getPassword(), userForm.getFirstName(), userForm.getLastName()));
     }
 
     public User getUser(String username){ return userMapper.getUser(username);}

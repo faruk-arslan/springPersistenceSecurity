@@ -28,6 +28,6 @@ public class SignUpController {
         // TODO: Check the availability of the username
         int rowsAdded=userService.createUser(userForm);
 
-        return "signup";
+        return "login";
     }
 }
