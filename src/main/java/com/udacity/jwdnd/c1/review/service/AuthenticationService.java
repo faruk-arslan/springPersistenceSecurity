@@ -28,8 +28,9 @@ public class AuthenticationService implements AuthenticationProvider {
         User user=userMapper.getUser(username);
 
         if(user!=null){
-            // TODO: Get salt, convert current password to salt and compare.
-            if(user.getPassword().equals(password)){
+            String encodedSalt = user.getSalt();
+            String hashedPassword = hashService.getHashedValue(password, encodedSalt);
+            if(user.getPassword().equals(hashedPassword)){
 
                 // this arraylist is for permissions (granted authorities)
                 return new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
